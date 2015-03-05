@@ -1,0 +1,21 @@
+{{#yield-styles}}
+  <link rel='stylesheet' href='/css/myresult.css' />
+{{/yield-styles}}
+
+{{#yield-scripts}}
+  <script src='/js/myresult.js'></script>
+{{/yield-scripts}}
+
+  <div class="tabs">
+    <a href="/selecttest?id={{testinfo.groupid}}&tab=r&uid={{userid}}" class="tab back">Tillbaka</a>
+  </div>
+
+  <div class='frames'>
+    <div class='frame default'>
+      <div class="header">
+        <h2>Testresultat på {{testinfo.name}}</h2>
+      </div>
+      <div class="browse">{{{selecthtml}}}</div>  
+      <div class='results browseitems'>{{{resultshtml}}}</div>
+    </div>
+  </div>

@@ -1,0 +1,77 @@
+{{#yield-styles}}
+  <link rel='stylesheet' href='/css/seltest.css' />
+{{/yield-styles}}
+{{#yield-scripts}}
+  <script src='/js/seltest.js'></script>
+  <script>
+    var groupid = {{group.id}};
+    var showres = {{showres}};
+    var uid = {{uid}};
+  </script>
+{{/yield-scripts}}
+
+<div class='tabs clearfix'>
+  <a class='tab back' href='/selectgroup'>Tillbaka</a>
+  <div class='tab selected' data-frame='start'>Starta deltest</div>
+  <div class='tab results' data-frame='results'>Testresultat</div>
+</div>
+
+<div class='frames'>
+  <div id='start' class='frame default'>
+    <div class='header clearfix'>
+      <h2 class='left'>Deltester i testet {{group.name}}</h2>
+      {{{newicon}}}
+    </div>
+    <div class='tablediv inner'>
+      <div class='thead'><div class='row clearfix'><div class='col col1'>Namn</div><div class='col col2'>Beskrivning</div><div class='col col3'></div></div></div>
+      <div class='tbody'>{{{tests}}}</div>
+    </div>
+  </div>
+  <div id='results' class='frame'>
+    <div class='header clearfix'>
+      <h2 class='left'>Testresultat för {{group.name}}</h2>
+      <a class='right print' title='Skriv ut'><img src='/gfx/print.png' alt='Print' /></a>
+    </div>
+    <div class='summary clearfix'>
+      <div class='left'>
+        <div>Antal deltester: <span class='noftests'>{{{summary.noftests}}}</span></div>
+        <div>Antal genomförda deltester: <span class='nofdonetests'>{{{summary.nofdonetests}}}</span></div>
+        <div>Totalt resultat: <span class='totres'>{{{summary.total}}}</span> %</div>
+      </div>
+      <div class='right'>
+        <h2>Elev</h2>
+        <select class='selelev'>{{{studentsopt}}}</select>
+      </div>
+    </div>
+    <div class='tablediv inner'>
+      <div class='thead'><div class='row clearfix'><div class='col col1'>Deltest</div><div class='col col2'>Resultat</div><div class='col col3'>Datum</div><div class='col col4'></div></div></div>
+      <div class='tbody'>{{{results}}}</div>
+    </div>
+  </div>
+</div>
+
+<div id='print'>
+  <div class='head clearfix'>
+    <h1 class='left'>Resideidental certifier - Testresultat</h1>
+    <img class='right' src='/gfx/logga.png' />
+  </div>
+  <div class='content'>
+    <div class='info1'>
+      <h1 class='username'>{{user.name}}</h1>
+      <h2>{{group.name}}</h2>
+      <h3>{{group.description}}</h3>
+    </div>
+    <div class='info2 summary'>
+      <table>
+        <tr><td>Handledare: </td><td><div class='supervisor'><span>{{{summary.supervisor}}}</span></div></td></tr>
+        <tr><td>Antal deltester: </td><td><div class='noftests'><span>{{{summary.noftests}}}</span></div></td></tr>
+        <tr><td>Antal genomförda deltester: </td><td><div class='nofdonetests'><span>{{{summary.nofdonetests}}}</span></div></td></tr>
+        <tr><td>Totalt resultat: </td><td><div class='totres'><span>{{{summary.total}}}</span> %</div></td></tr>
+      </table>
+    </div>
+    <table class='results'>
+      <thead><tr><th><h3>Deltest</h3></th><th><h3>Resultat</h3></th><th><h3>Testdatum</h3></th></tr></thead>
+      <tbody>{{{printresults}}}</tbody>
+    </table>
+  </div>
+</div>

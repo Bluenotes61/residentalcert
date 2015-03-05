@@ -1,0 +1,101 @@
+#print {
+  display: none;
+}
+.summary {
+  background:#ADDFE9;
+  padding:10px; 
+}
+.summary div span {
+  font-weight: bold;
+}
+
+#results .header .print {
+  display: inline-block;
+  width:26px;
+  height:26px;
+}
+#results .header .print img {
+  width:100%;
+}
+
+#results .tablediv .col1 {
+  width:55%;
+}
+#results .tablediv .col1 .name {
+  font-weight: bold;
+}
+#results .tablediv .col2 {
+  width:20%;
+  white-space: nowrap;
+}
+#results .tablediv .col3 {
+  width:20%;
+}
+#results .tablediv .col4 {
+  width:5%;
+}
+
+@media(max-width: 450px) {
+  #results .tablediv .col {
+    width:100%;
+  }
+}
+
+@media print {
+  #header,
+  #footer,
+  .tabs,
+  .frames {
+    display:none;
+  }
+  #content {
+    margin:0;
+    max-width: 100%;
+    padding:20px;
+  }
+
+  body {
+    margin:0;
+  }
+
+  #print {
+    display: block;
+  }
+  #print .head {
+    line-height: 40px;
+    padding-bottom: 30px;
+    border-bottom: solid 4px #999;
+  }
+  #print .head img {
+    width: 40px;
+  }
+
+  #print .content {
+    font-size:80%;
+  }
+  #print .content .info1 {
+    text-align: center;
+    padding: 30px 0;
+  }
+  #print .content .info2 {
+    border-top: solid 2px #ccc;
+    border-bottom: solid 2px #ccc;
+    padding: 20px 0;
+  }
+  #print table.results {
+    margin-top:30px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  #print table.results thead th {
+    text-align: left;
+    border-bottom:solid 3px #ccc;
+  }
+  #print table.results tbody td {
+    border-bottom:solid 1px #ccc;
+    padding:10px 0;
+  }
+  #print table.results tbody td div.name {
+    font-weight: bold;
+  }
+}

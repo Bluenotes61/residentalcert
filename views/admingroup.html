@@ -1,0 +1,63 @@
+{{#yield-styles}}
+  <link rel='stylesheet' href='/css/admingroup.css' />
+{{/yield-styles}}
+
+{{#yield-scripts}}
+  <script src='/js/admingroup.js'></script>
+  <script>
+    var roles={{{roles}}};
+  </script>
+{{/yield-scripts}}
+
+<div class='tabs clearfix'>
+  <a class='tab back' href='/selectgroup'>Tillbaka</a>
+  {{#allowedit}}
+    <div class='tab selected' data-frame='admintest'>Test</div>
+    <div class='tab' data-frame='adminusers'>Användare</div>
+  {{/allowedit}}
+</div>
+
+<input type='hidden' id='inpgroupid' value='{{groupinfo.id}}' />
+<div class='frames'>
+ {{#allowedit}}
+    <div id='admintest' class='frame default'>
+      <div class='header clearfix'>
+        <h2 class='left'>Testets egenskaper</h2>
+        <div class='buttons right'>
+          <a class='editbtn icon static' title='Redigera testets egenskaper'><img src='/gfx/pen_white.png' alt='Redigera' /></a>
+          <a class='savebtn icon edit' title='Spara ändringar'><img src='/gfx/cd_white.png' alt='Spara' /></a>
+          <a class='cancelbtn icon edit' title='Ångra redigering'><img src='/gfx/cancel_white.png' alt='Ångra' /></a>
+        </div>
+      </div>
+      <div class='editdiv inner'>
+        <div class='row clearfix name'>
+          <div class='title'>Namn</div>
+          <div class='static'>{{groupinfo.name}}</div>
+          <div class='edit'><input type='text' /></div>
+        </div>
+        <div class='row clearfix description'>
+          <div class='title'>Beskrivning</div>
+          <div class='static'>{{groupinfo.description}}</div>
+          <div class='edit'><textarea class='edit'></textarea></div>
+        </div>
+      </div>
+    </div>
+  {{/allowedit}}
+
+  {{#allowedit}}<div id='adminusers' class='frame'>{{/allowedit}}
+  {{#notallowedit}}<div id='adminusers' class='frame default'>{{/notallowedit}}
+    <div class='header clearfix'>
+      <h2 class='left'>Testets användare</h2>
+      <a class='newbtn icon right' title='Lägg till en användare med behörighet till testet'><img src='/gfx/plus_white.png' alt='Lägg till' /></a>
+    </div>
+    <div class='tablediv inner users'>
+      <div class='thead'><div class='row clearfix'>
+        <div class='col col1'>E-postadress</div>
+        <div class='col col2'>Namn</div>
+        <div class='col col3'>Roll</div>
+        <div class='col col4'></div>
+      </div></div>
+      <div class='tbody'>{{{users}}}</div>
+    </div>
+  </div>
+</div>

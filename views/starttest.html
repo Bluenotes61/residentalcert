@@ -1,0 +1,36 @@
+{{#yield-styles}}
+  <link rel='stylesheet' href='/css/starttest.css' />
+{{/yield-styles}}
+
+<div class='frames'>
+  <div class='frame default'>
+    <div class='header'>
+      <h2>
+        {{#ok}}Instruktioner{{/ok}}
+        {{#nomore}}Avslutat{{/nomore}}
+        {{#err}}Fel{{/err}}
+      </h2>
+    </div>
+    <div class='inner'>
+      {{#ok}}
+        <p>Du kommer nu att starta deltestet {{test.groupname}} / {{test.name}}.</p>
+        <p>Du har gjort {{test.noffinished}} försök {{#isstudent}} av {{test.noftries}} möjliga {{/isstudent}}på det här deltestet.</p>
+        <p>Deltestet består av {{test.questions.length}} alternativfrågor och du har {{test.hm.h}} timmar och {{test.hm.m}} minuter på dig att göra det.</p>
+        <p>När du startat deltestet går det inte att avbryta eller pausa.</p>
+        <p>Klicka på &quot;Starta testet&quot; för att starta.</p>
+      {{/ok}}
+      {{#nomore}}
+        <p>Du har gjort {{test.noffinished}} försök av {{test.noftries}} möjliga på det här deltestet.</p>
+        <p>Deltestet är därmed avslutat.</p>
+      {{/nomore}}
+      {{#err}}
+        <p>Ett fel har uppstått</p>
+        <p>{{errmess}}</p>
+      {{/err}}
+      <div class='btns'>
+        <a href='/selecttest?id={{test.groupid}}' class='back button'>Tillbaka</a>
+        {{#ok}}<a href='/test?id={{test.id}}&sid={{startedid}}' class='go button'>Starta testet</a>{{/ok}}
+      </div>
+    </div>
+  </div>
+</div>

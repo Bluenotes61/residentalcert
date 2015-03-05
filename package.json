@@ -1,4 +1,29 @@
 {
-  "name": "residentalcert",
-  "version": "0.0.1"
+  "name": "ST-test",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "~4.0.0",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "cookies": "*",
+    "cookie-parser": "*",
+    "body-parser": "~1.0.0",
+    "debug": "~0.7.4",
+    "hogan-express": "*",
+    "method-override": "*",
+    "static":"*",
+    "express-session":"*",
+    "connect-busboy":"*",
+    "mysql":"*",
+    "nodemailer":"*",
+    "images":"*",
+    "q":"*"
+  },
+  "devDependencies": {
+    "nodemon": "*"
+  }
 }

@@ -1,0 +1,150 @@
+
+#testdiv {
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top:20px;
+  margin-bottom:105px;
+}
+#testdiv .questiondiv {
+  padding:10px;
+  width:100%;
+  display: inline-block;
+  vertical-align: top;
+  white-space: normal;
+}
+#testdiv .question {
+  padding: 20px;
+  margin-bottom:20px;
+}
+#testdiv .question iframe, 
+#testdiv .question img {
+  max-width: 100%;
+}
+#testdiv .questiondiv .info {
+  margin-left:20px;
+  font-size: 75%;
+  color:#999;
+  margin-bottom: 10px;
+}
+#testdiv .alternatives .alternative {
+  border:solid 1px #eee;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom:20px;
+  background: #fff;
+  cursor: pointer; 
+
+  -webkit-box-shadow: 2px 2px 3px 1px rgba(100, 100, 100, 0.3);
+  -moz-box-shadow:    2px 2px 3px 1px rgba(100, 100, 100, 0.3);
+  box-shadow:         2px 2px 3px 1px rgba(100, 100, 100, 0.3);
+  opacity:0.7;  
+}
+#testdiv .alternatives .alternative:hover,
+#testdiv .alternatives .alternative.checked {
+  background: #EAF4F7;
+  border:solid 1px #999;
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow:    2px 2px 2px 0px rgba(0, 0, 0, 0.75);
+  box-shadow:         2px 2px 2px 0px rgba(0, 0, 0, 0.75);  
+  opacity:1;
+}
+#testdiv .alternatives .alternative.checked {
+  background: #EAF4F7 url(../gfx/check.png) no-repeat right center;
+}
+#testdiv .alternatives .alternative div.alttext {
+  cursor: pointer;
+}
+#testdiv .alternatives .alternative input {
+  display: none;
+}
+
+
+#footer .inner {
+  max-width: 900px;
+  margin:0 auto;
+  display: block;
+}
+#footer .left,
+#footer .right {
+  width:10%;
+  min-height: 10px;
+}
+#footer .center {
+  width:80%;
+  text-align: center;
+  font-size: 120%;
+}
+#footer .next a,
+#footer .prev a {
+  margin-top:16px;
+  width:50px;
+  height:50px;
+  max-width: 100%;
+}
+#footer .prev a {
+  display: none;
+}
+#footer .next {
+  text-align: right;
+}
+#footer .answered {
+  font-size:50%;
+  text-align: center;
+}
+#footer .indicator {
+  height:5px;
+  border:solid 1px #fff;
+  width:200px;
+  display: inline-block;
+  margin-right:5px;
+}
+#footer .indicator .bar {
+  background:#fff;
+  height:100%;
+  width:0;
+  transition:width 1s ease;
+}
+#footer .time.alert {
+  color:#f00;
+}
+
+#finalize {
+  position: fixed;
+  bottom:0;
+  text-align: center;
+  width: 100%;
+  left:0;
+  transition:bottom 1s ease;
+}
+
+#timeup button {
+  margin-top:20px;
+}
+
+
+#footer {
+  position: fixed;
+}
+
+@media(max-width: 620px) {
+  #footer #logo {
+    display: none;
+  }
+  #footer .center {
+    font-size: 100%;
+  }
+  body {
+    margin:0 0 92px;
+  }
+  #footer {
+    height:92px;
+  }
+}
+@media(max-width: 450px) {
+  #footer .center {
+    font-size: 80%;
+  }
+  #footer .center .time span {
+    display: block;
+  }
+}

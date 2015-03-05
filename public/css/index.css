@@ -1,0 +1,43 @@
+#header .loginout {
+  display: none;
+}
+
+.intro {
+  text-align: center;
+  margin:10% auto 10% auto;
+}
+.title {
+  font-size: 50px;
+}
+form div {
+  text-align: center;
+  margin-top:20px;
+}
+#lierror {
+  font-size: 90%;
+  color:#FF6E04;
+}
+#forgot {
+  margin-top:10px;
+  text-align: center;
+}
+#forgot a.openforgot {
+  font-size: 80%;
+}
+#forgot .forgotform {
+  margin-top:10px;
+  display: none;
+}
+#forgot .forgotform a {
+  margin-top:10px;
+}
+#forgot .forgotform .sendresponse {
+  margin-top:10px;
+}
+
+
+@media(max-width: 450px) {
+  .title {
+    font-size: 30px;
+  }
+}

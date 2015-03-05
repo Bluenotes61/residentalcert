@@ -1,0 +1,27 @@
+#templates {
+  display: none;
+}
+
+.users div.curruser a.delbtn {
+  display:none !important;
+}
+
+.users .col1 {
+  width:35%;
+}
+.users .col2 {
+  width:25%;
+}
+.users .col3 {
+  width:20%;
+}
+.users .col4 {
+  width:20%;
+}
+
+
+@media(max-width: 450px) {  
+  .users .col {
+    width:100%;
+  }
+}

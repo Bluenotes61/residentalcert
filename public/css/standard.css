@@ -1,0 +1,157 @@
+/* Needed for IE9 */
+.onoffswitch {
+  display: inline-block !important;
+}
+
+.frames {
+  position: relative;
+}
+.frame {
+  border: solid 2px #29ADCE;
+  border-top:none;
+  background: #fff;
+  top:0;
+  width: 100%;
+  display: none;
+}
+.frame.default {
+  display:block;
+}
+.frame .header {
+  padding:10px;
+  background: #29ADCE;
+}
+.frame .header h2 {
+  color: #fff;
+}
+.frame .inner {
+  margin: 20px;
+}
+.frame .edit {
+  display: none;
+}
+
+
+.frame .editdiv .row {
+  padding-bottom: 20px;
+}
+.frame .editdiv .row > div {
+  float:left;.
+}
+.frame .editdiv textarea,
+.frame .editdiv input[type=text] {
+  width:100%;
+}
+.frame .editdiv .row .title {
+  width:25%;
+  font-weight: bold;
+}
+.frame .editdiv .row div.static,
+.frame .editdiv .row div.edit {
+  width:75%;
+}
+
+
+.browse {
+  background: #29ADCE;
+  padding:10px;
+}
+.browse a {
+  display: inline-block;
+  padding:5px;
+  border:solid 1px #666;
+  background: #fff;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+.browse a:hover,
+.browse a.selected {
+  background: #ADDFE9;
+}
+
+.browseitems {
+  position: relative;
+}
+.browseitem {
+  top:0;
+  width: 100%;
+  display: none;
+}
+.browseitem:first-child {
+  display: block;
+}
+
+
+
+
+.tablediv {
+  margin:20px;
+}
+.tablediv .thead > div {
+  font-weight: bold;
+  border-bottom: solid 2px #29ADCE;
+}
+.tablediv .tbody > div {
+  border-top: solid 1px #29ADCE;
+}
+.tablediv .tbody > div:first-child {
+  border-top: none;
+}
+.tablediv .col {
+  padding:10px 5px;
+  float: left;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+.tablediv .col input {
+  width: 100%;
+}
+.tablediv .col1 {
+  width:30%;
+}
+.tablediv .col2 {
+  width:50%;
+}
+.tablediv .col3 {
+  width:20%;
+}
+.tablediv .col4 {
+  width:0%;
+}
+.tablediv .btns {
+  text-align: right;
+}
+.tablediv .btns a.icon {
+  display: inline-block;
+  margin-right:5px;
+}
+
+
+
+@media(max-width: 450px) {
+  .frame .editdiv .row > div {
+    float:none;
+  }
+  .frame .editdiv .row div.title,
+  .frame .editdiv .row div.static,
+  .frame .editdiv .row div.edit {
+    width:100%;
+  }
+ .tablediv .thead {
+  display: none;
+ }
+ .tablediv .row {
+  padding:10px 0;
+ }
+ .tablediv .row:first-child {
+  padding-top:0;
+ }
+ .tablediv .col {
+    float: none;
+    width: 100%;
+    padding:5px;
+  }
+  .tablediv .btns {
+    text-align: left;
+  }
+}

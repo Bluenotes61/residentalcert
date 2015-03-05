@@ -1,0 +1,149 @@
+{{#yield-styles}}
+  <link rel='stylesheet' href='/css/admintest.css' />
+  <link rel='stylesheet' href='/css/jquery.onoff.css' />
+{{/yield-styles}}
+
+{{#yield-scripts}}
+  <script src='/js/admintest.js'></script>
+  <script src='/js/tools/tinymce/tinymce.min.js'></script>
+  <script src='/js/tools/tinymce/jquery.tinymce.min.js'></script>
+  <script src='/js/jquery.onoff.min.js'></script>
+  <script>
+    var questions = {{{questions}}};
+  </script>
+{{/yield-scripts}}
+
+<div id='templates'>
+  
+  <div class='alternative'>
+    <div class='althead clearfix'>
+      <h3 class='left idx'></h3>
+      <div class='left'>
+        {{#editpermission}}<input type='checkbox' class='iscorrect janej' />Rätt svar{{/editpermission}}
+        {{#noteditpermission}}<span class='iscorrect'>Rätt svar</span>{{/noteditpermission}}
+      </div>
+      {{#editpermission}}
+        <div class='right'> 
+          <div class='astatic'>
+            <a class='editbtn icon' title='Redigera svarsalternativets text'><img src='/gfx/pen.png' alt='Redigera' /></a> 
+            <a class='delbtn icon' title='Ta bort svarsalternativet'><img src='/gfx/x.png' alt='Ta bort' /></a> 
+            <a class='upbtn icon' title='Flytta svarsalternativet uppåt'><img src='/gfx/up.png' alt='Flytta upp' /></a> 
+            <a class='downbtn icon' title='Flytta svarsalternativet neråt'><img src='/gfx/down.png' alt='Flytta ner' /></a> 
+          </div>
+          <div class='aedit'>
+            <a class='savebtn icon' title='Spara ändringar'><img src='/gfx/cd.png' alt='Spara' /></a> 
+            <a class='cancelbtn icon' title='Avbryt redigering'><img src='/gfx/cancel.png' alt='Avbryt' /></a> 
+          </div>
+        </div> 
+      {{/editpermission}}
+    </div>
+    <div class='astatic text'></div>
+    <div class='aedit'><textarea class='edittext'></textarea></div>
+  </div>
+
+</div>
+
+<div class='tabs clearfix'>
+  <a class='tab back' href='/selecttest?id={{testinfo.groupid}}'>Tillbaka</a>
+  <div class='tab selected' data-frame='admintest'>Deltest</div>
+  <div class='tab' data-frame='adminq'>Frågor</div>
+</div>
+
+<div class='frames'>
+  <div id='admintest' class='frame default'>
+    <div class='header clearfix'>
+      <h2 class='left'>Deltestets egenskaper</h2>
+      {{#editpermission}}
+        <div class='buttons right'>
+          <a class='editbtn icon static' title='Redigera testets egenskaper'><img src='/gfx/pen_white.png' alt='Redigera' /></a>
+          <a class='savebtn icon edit' title='Spara ändringar'><img src='/gfx/cd_white.png' alt='Spara' /></a>
+          <a class='cancelbtn icon edit' title='Ångra redigering'><img src='/gfx/cancel_white.png' alt='Ångra' /></a>
+        </div>
+      {{/editpermission}}
+    </div>
+    <div class='editdiv inner'>
+      <input type='hidden' class='testid' value='{{testinfo.id}}' />
+      <div class='row clearfix name'>
+        <div class='title'>Namn</div>
+        <div class='static'>{{testinfo.name}}</div>
+        <div class='edit'><input type='text' /></div>
+      </div>
+      <div class='row clearfix description'>
+        <div class='title'>Beskrivning</div>
+        <div class='static'>{{testinfo.description}}</div>
+        <div class='edit'><textarea class='edit'></textarea></div>
+      </div>
+      <div class='row clearfix testtime'>
+        <div class='title'>Testtid</div>
+        <div class='static'></div>
+        <div class='rawval'>{{testinfo.testtime}}</div>
+        <div class='edit'><input type='number' class='hours edit number'  min='0' max='23' /> : <input type='number' class='minutes edit number'  min='0' max='59' /></div>
+      </div>
+      <div class='row clearfix randomquestions'>
+        <div class='title'>Slumpade frågor</div>
+        <div class='static'></div>
+        <div class='rawval'>{{testinfo.randomquestions}}</div>
+        <div class='edit'><input type='checkbox' class='janej' /></div>
+      </div>
+      <div class='row clearfix nofq'>
+        <div class='title'>Antal frågor</div>
+        <div class='rawval'>{{testinfo.nofquestions}}</div>
+        <div class='static'></div>
+        <div class='edit'><input type='checkbox' class='allq janej' /><input type='number' class='nofqval number' min='1' max='{{testinfo.questions.length}}' /></div>
+      </div>
+      <div class='row clearfix noftries'>
+        <div class='title'>Antal försök</div>
+        <div class='static'>{{testinfo.noftries}}</div>
+        <div class='edit'><input type='number' class='noftriesval number' min='1' /></div>
+      </div>
+    </div>
+  </div>
+
+  <div id='adminq' class='frame'>
+    <div class='header clearfix'>
+      {{#noteditpermission}}<h2>Deltestets frågor</h2>{{/noteditpermission}}
+      {{#editpermission}}
+        <h2 class='left'>Administrera deltestets frågor</h2>
+        <a class='newbtn right icon' title='Lägg till en fråga'><img src='/gfx/plus_white.png' alt='Lägg till' /></a>
+      {{/editpermission}}
+    </div>
+    <div class='browse'></div>
+
+    <div class='questiondiv'>
+      <div class='head clearfix'>
+        <h2 class='left idx'></h2>
+        {{#noteditpermission}}
+          <div class='left'>
+            <div class='ismulti'>Flera möjliga alternativ</div>
+            <div class='randomalt'>Slumpad alternativordning</div> 
+          </div> 
+        {{/noteditpermission}}
+        {{#editpermission}}
+          <div class='left'>
+            <div><input type='checkbox' class='ismulti janej' />Flera möjliga alternativ</div>
+            <div><input type='checkbox' class='randomalt janej' />Slumpad alternativordning</div>
+          </div> 
+          <div class='right qstatic'> 
+            <a class='editbtn icon' title='Redigera frågans text'><img src='/gfx/pen.png' alt='Redigera' /></a> 
+            <a class='delbtn icon' title='Ta bort frågan'><img src='/gfx/x.png' alt='Ta bort' /></a> 
+            <a class='upbtn icon' title='Flytta frågan bakåt'><img src='/gfx/up.png' alt='Flytta upp' /></a> 
+            <a class='downbtn icon' title='Flytta frågan framåt'><img src='/gfx/down.png' alt='Flytta ner' /></a> 
+          </div>
+          <div class='right qedit'> 
+            <a class='savebtn icon' title='Spara ändringar'><img src='/gfx/cd.png' alt='Spara' /></a>
+            <a class='cancelbtn icon' title='Avbryt redigering'><img src='/gfx/cancel.png' alt='Avbryt' /></a>
+          </div>
+        {{/editpermission}}
+      </div>
+      <div class='question qstatic'></div> 
+      <div class='qedit'><textarea id='editquestion'></textarea></div> 
+      <div class='alternatives'>
+        <div class='title clearfix'>
+          <h3 class='left'>Svarsalternativ</h3>
+          {{#editpermission}}<a class='newbtn icon right' title='Lägg till ett svarsalternativ'><img src='/gfx/plus_white.png' alt='Lägg till' /></a>{{/editpermission}}
+        </div>
+        <div class='altlist'></div>
+      </div>
+    </div>
+  </div>
+</div>

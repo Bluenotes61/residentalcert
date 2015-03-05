@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<!--[if lte IE 8]>
+  <html class="ie8">
+<![endif]-->
+<!--[if !lte IE 8]>
+  <html>
+<![endif]-->
+  <head>
+    <title>{{pagetitle}}</title>
+    <meta http-equiv="Content-Type" charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link rel="icon" type="image/png" href="/gfx/favicon.png">
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,400italic,700,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" type="image/png" href="/gfx/favicon.png"/>
+    <!--link rel='stylesheet' href='/css/reset.css' /-->
+    <link rel='stylesheet' href='/css/base.css' />
+    <link rel="stylesheet" href="/js/tools/tooltipster/tooltipster.css" />
+    {{{yield-styles}}}
+    <script src='/js/jquery-1.10.2.min.js'></script>
+    <script src='/js/q.js'></script>
+    <script type="text/javascript" src="/js/tools/tooltipster/jquery.tooltipster.min.js"></script>
+    <script src='/js/ajax.js'></script>
+    <script src='/js/common.js'></script>
+    {{{yield-scripts}}} 
+  </head>
+  <body>
+    <div id="ie8">Du använder en gammal webbläsare (Internet Explorer 8) som inte stöds av Resident certifier.<br />Var vänlig uppgradera din webbläsare eller använd t.ex. Google Chrome.</div>
+    <div id='bgdim'></div>
+    <div id='ajaxerror' class='popinfo'></div>
+    <div id="header" class='clearfix'>
+      <a href='/' class='left'><span>Resident<br />certifier</span></a>
+      <div class='right clearfix'>
+        <div class='infodiv'>
+          <div class='title1'>{{{title1}}}</div>
+          <div class='title2'>{{{title2}}}</div>
+          <div class='title3'>{{{title3}}}</div>
+        </div>
+        {{#user}}
+          <div class='loginout'>
+            <div>{{user.name}}</div>
+            <a href='/logout'>Logga ut</a>
+          </div>
+        {{/user}}
+      </div>
+    </div>
+    <div id='content'>
+      <div class='pageerror'>{{{pageerror}}}</div>
+      {{{yield}}}
+    </div>
+    <div id='footer'>
+      <a id='logo' href='mailto:info@patientbesked.se'><img src='/gfx/logga.png' alt='Powered by Postdoc' /></a>
+      {{{yield-footer}}}
+    </div>
+    
+  </body>
+</html>
+
+
+

@@ -1,0 +1,49 @@
+.selector ul {
+  padding: 0;
+  list-style-type: none;
+}
+.selector ul li {
+  display: inline-block;
+}
+
+
+
+
+.browseitem {
+  border:2px solid #29ADCE;
+}
+
+.results .reshead {
+  background:#ADDFE9;
+  padding:20px;
+}
+
+
+.tablediv .col1 {
+  width:55%;
+}
+.tablediv .col2 {
+  width:35%;
+}
+.tablediv .col3 {
+  width:10%;
+}
+
+@media(max-width: 450px) {
+  .tablediv .row {
+      padding: 20px 0;
+  }
+  .tablediv .col {
+    width:100%;
+  }
+  .tablediv .col1 {
+    border:solid 1px #ADDFE9;
+  }
+  .tablediv .col2 {
+    border:solid 1px #ADDFE9;
+    margin:5px 0;
+  }
+  .tablediv .col3 {
+    text-align: center;
+  }
+}

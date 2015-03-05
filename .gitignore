@@ -4,3 +4,5 @@
 /private
 node_modules
 /public/generated
+/config.js
+/public/uploads

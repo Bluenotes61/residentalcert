@@ -1,0 +1,120 @@
+#templates {
+  display: none;
+}
+
+
+#admintest .editdiv .row .rawval {
+  display: none;
+}
+#admintest .editdiv input.number {
+  width:66px;
+}
+#admintest .editdiv div.allq {
+  display: inline-block;
+  margin-top:3px;
+  margin-right:10px;
+}
+#admintest .editdiv .nofq .onoffswitch {
+  width:84px;
+}
+#admintest .editdiv .nofq .onoffswitch-switch {
+  right:56px;
+}
+#admintest .editdiv .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right:0;
+}
+#admintest .editdiv .nofq .onoffswitch-inner:before {
+  content: "ALLA";
+}
+#admintest .editdiv .nofq .onoffswitch-inner:after {
+  content: "ANTAL";
+}
+
+
+
+#adminq .questiondiv {
+  background: #f3f3f3;
+  display: none;
+}
+
+#adminq .questiondiv .head {
+  background: #ADDFE9;
+  padding:10px;
+}
+#adminq .questiondiv .head * {
+  vertical-align: middle;
+}
+#adminq .questiondiv .head h2 {
+  margin-right:40px;
+  line-height: 75%;
+}
+#adminq .questiondiv .head .onoffswitch {
+  display: inline-block;
+  margin-right: 10px;
+}
+#adminq .questiondiv .head a.icon {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+#adminq .questiondiv .question {
+  padding:30px;
+  background: #fff;
+}
+#adminq .questiondiv .qedit {
+  display: none;
+}
+
+
+
+#adminq .questiondiv .alternatives .title {
+  background: #29ADCE;
+  padding:5px 10px;
+}
+#adminq .questiondiv .alternatives .title h3 {
+  color:#fff;
+  float: left;
+  margin-right: 40px;
+}
+#adminq .questiondiv .alternatives .onoffswitch {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#adminq .questiondiv .alternatives .alternative .althead {
+  background: #ADDFE9;
+  padding:5px 10px;
+}
+#adminq .questiondiv .alternatives .alternative .althead span {
+  font-size: 18px;
+}
+#adminq .questiondiv .alternatives .alternative .althead * {
+  vertical-align: middle;
+}
+#adminq .questiondiv .alternatives .alternative .althead h3 {
+  margin-right: 40px;
+}
+#adminq .questiondiv .alternatives a.icon {
+  width:18px;
+  height: 18px; 
+}
+#adminq .questiondiv .alternatives .alternative .althead a.icon {
+  display: inline-block;
+  margin-left: 5px;
+}
+#adminq .questiondiv .alternatives .alternative .text {
+  padding:30px;
+  min-height: 50px;
+  background: #fff;
+}
+#adminq .questiondiv .alternatives .alternative .aedit {
+  display: none;
+}
+
+
+@media(max-width: 620px) {
+  #adminq .questiondiv .head > * {
+    float:none;
+    padding:5px 0;
+  }
+}

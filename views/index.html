@@ -1,0 +1,31 @@
+{{#yield-styles}}
+  <link rel='stylesheet' href='/css/index.css' />
+{{/yield-styles}}
+
+{{#yield-scripts}}
+  <script src='/js/index.js'></script>
+{{/yield-scripts}}
+
+<div class='intro'>
+  <div class='title'>Välkommen till Resident certifier</div>
+  <div>Logga in med de användaruppgifter du har blivit tilldelad.</div>
+</div>
+<form method='post' action='/'>
+  <div><input id='email' name='email' type='email' placeholder='E-postadress' /></div>
+  <div><input id='password' name='password' type='password' placeholder='Lösenord' /></div>
+  {{#error}}
+    <div id='lierror'>Användaruppgifterna inte accepterade</div>
+  {{/error}}
+  <div><input type='submit' class='button' value='Logga in' /></div>
+</form>
+<div id='forgot'>
+  <a class='openforgot'>Glömt lösenordet?</a>
+  <div class='forgotform'>
+    <div><input class='emailforgot' type='email' placeholder='E-postadress' /></div>
+    <div><a class='button'>Skicka uppgifter</a></div>
+    <div class='sendresponse'></div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,42 @@
+{{#yield-styles}}
+  <link rel='stylesheet' href='/css/test.css' />
+{{/yield-styles}}
+
+{{#yield-scripts}}
+  <script src='/js/test.js'></script>
+  <script>
+    var started = {{{ started }}};
+    var prevselected = {{{ prevselected }}};
+  </script>
+{{/yield-scripts}}
+
+
+<form id='finalizeform' action='finalize' method='post'>
+  <div id='timeup' class='popinfo'>
+    <div>Tiden är slut.</div>
+    <div>Testet avslutas.</div>
+    <button class='button'>Ok</button>
+  </div>
+
+  <div id='testdiv'>
+    <input type='hidden' id='testid' name='testid' />
+    <input type='hidden' id='startedid' name='startedid' />
+    <div class='questionsdiv'>
+      {{{ questions }}}
+    </div>
+  </div>
+
+  <div id='finalize'><button class='button'>Avsluta och spara resultat</button></div>
+</form>
+
+{{#yield-footer}}
+  <div class='inner clearfix'>
+    <div class='left prev'><a class='icon' title='Gå till föregående fråga'><img src='/gfx/prev.png' alt='Föregående' /></a></div>
+    <div class='center left'>
+      <div class='qnrdiv'><span class='qnr'>Fråga 1</span></div>
+      <div class='answered'><div class='indicator'><div class='bar'></div></div><span class='nofa'>0 besvarade</span></div>
+      <div class='time'>Återstående tid: <span class='remaining'>0 tim 0 min 0 sek</span></div>
+    </div>
+    <div class='right next'><a class='icon' title='Gå till nästa fråga'><img src='/gfx/next.png' alt='Nästa' /></a></div>
+  </div>
+{{/yield-footer}}
