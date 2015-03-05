@@ -6,10 +6,11 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var busboy = require('connect-busboy');
 var usermw = require("./helpers/user.js");  
+var config = require("./config.js")
     
-var app = express();    
+var app = express();     
 
-var server = app.listen(3001, function() {
+var server = app.listen(config.server.port, function() {
   console.log('Listening on port %d', server.address().port);
 });      
    
@@ -23,7 +24,7 @@ app.use(busboy());
 app.use(methodOverride());
 app.use(cookieParser()); 
 app.use(session({
-  secret:'En hemlighet', 
+  secret:'En bevarad hemlighet', 
   resave:true, 
   saveUninitialized:true
 }));
