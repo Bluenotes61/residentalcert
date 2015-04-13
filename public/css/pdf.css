@@ -1,0 +1,72 @@
+body {
+  margin:0;
+}
+
+.head {
+}
+.head .logo {
+  max-width:20%;
+  padding:10px;
+  background: #FF6E04;
+  color:#fff;
+}
+.head .logo * {
+  vertical-align: middle;
+}
+.head .logo div,
+.head .logo img {
+  display: inline-block;
+}
+.head .center {
+  width:60%;
+  text-align: center;
+}
+
+.content .info {
+  padding: 20px;
+  font-size: 110%;
+  background: #e5e5e5;
+}
+table.results {
+  font-size: 90%;
+  margin-top:30px;
+  width: 100%;
+  border-collapse: collapse;
+}
+table.results thead th {
+  text-align: left;
+  border-bottom:solid 3px #ccc;
+  font-weight: bold;
+}
+table.results tbody td {
+  border-bottom:solid 1px #ccc;
+  padding:10px 0;
+}
+table.results tbody td div.name {
+  font-weight: bold;
+}
+
+.foot {
+  padding-top:20px;
+  font-size:80%;
+  color:#999;
+  border-top:solid 3px #999;
+  position: relative;
+}
+.foot * {
+  vertical-align: middle;
+}
+.foot .logo {
+  width:15%;
+}
+.foot .logo img {
+  height:30px;
+}
+.foot .name {
+  width:70%;
+  text-align: center;
+}
+.foot .pagenr {
+  width:15%;
+  text-align: right;
+}
