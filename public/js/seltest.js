@@ -21,7 +21,8 @@ $(document).ready(function(){
     });
 
     $("#results .header .print").click(function(){
-      window.print();
+      $("#pdfhtml").val($("#print").html());
+      $("#printform").submit();
     });
 
     // Create new test
@@ -89,10 +90,11 @@ $(document).ready(function(){
   function getResults(userid) {
     ajax.post("/getuserresults", {userid:userid, groupid:groupid}).then(
       function(response) {
-        $("#print .content .username").text(response.summary.username);
+        console.log(response);
+        $("#print .username").text(response.summary.username);
         $(".summary .noftests").text(response.summary.noftests);
         $(".summary .nofdonetests").text(response.summary.nofdonetests);
-        $(".summary .totres").text(response.summary.total);
+        $(".summary .totres").text(response.summary.total + " %");
         $(".summary .supervisor").text(response.summary.supervisor);
         $("#results .tablediv .tbody").html(response.html);
         $("#print .results tbody").html(response.printhtml);

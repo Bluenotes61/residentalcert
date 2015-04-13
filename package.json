@@ -21,6 +21,8 @@
     "mysql":"*",
     "nodemailer":"*",
     "images":"*",
+    "html-pdf": "*",
+    "phantomjs": "^1.9.16",
     "q":"*"
   },
   "devDependencies": {

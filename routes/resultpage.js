@@ -1,4 +1,7 @@
 var db = require("../helpers/db.js");
+var fs = require('fs');
+var path = require('path');
+var pdf = require('html-pdf');
 var common = require("../helpers/common.js");
 var Q = require('q');
 
@@ -164,4 +167,59 @@ function getAnswer(questionid, altrows) {
     }
   }
   return {iscorrect:iscorrect, selalts:selalts};
+}
+
+exports.getPdf = function(req, res) {
+  var contcss = "";
+  readFile("/css/base.css").then(
+    function(css) {
+      contcss += css;
+      return readFile("/css/pdf.css");
+    }
+  ).then(
+    function(css) {
+      contcss += css;
+      var html = "<!DOCTYPE html><html><head>" + 
+        "<style type='text/css'> " + contcss + "</style>" + 
+        "</head><body>" + req.body.pdfhtml + "</body></html>";
+      var imgsrc = "file:///" + path.dirname(require.main.filename) + "/public";
+      var html = html.replace(/src="/g, 'src="' + imgsrc).replace(/src='/g, "src='" + imgsrc).replace(/@Page@/g, "{{page}}({{pages}})");
+      var options = { 
+        format: 'A4',
+        border: {
+          top: "0mm",
+          right: "10mm",
+          bottom: "0mm",
+          left: "10mm" 
+        },
+        header:{height:"30mm"},
+        footer:{height:"20mm"}
+      };
+      pdf.create(html, options).toBuffer(function(err, buffer){
+        if (err) 
+          res.send("Error in getPdf:" + err);
+        else {
+          res.setHeader('Content-Type', 'application/pdf');
+          res.setHeader('Content-Disposition', 'inline; filename="Testresultat.pdf"'); 
+          res.writeHead(res.statusCode);
+          res.write(buffer);
+          res.end();
+        }
+      });
+    },
+    function(err) {
+      res.send("Error in getPdf:" + err);
+    }
+  );
+}
+
+function readFile(filename) {
+  var serverDir = path.dirname(require.main.filename) + "/public";
+
+  var d = Q.defer();
+  fs.readFile(serverDir + filename, function(error, data) {
+    if (error) d.resolve("");
+    else d.resolve(data);
+  });
+  return d.promise;
 }

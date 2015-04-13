@@ -54,5 +54,6 @@ router.post("/saveanswer", testpage.saveAnswer);
 router.post("/finalize", finalpage.index); 
 
 router.get("/resultat", resultpage.index);
+router.post("/Testresultat", resultpage.getPdf); 
 
 module.exports = router;

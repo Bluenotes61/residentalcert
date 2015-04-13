@@ -18,7 +18,7 @@ var server = app.listen(config.port, function() {
 app.set('views', __dirname + '/views');
 app.set('view engine', 'html');
 app.set('layout', 'layout');
-app.engine('html', require('hogan-express'));
+app.engine('html', require('hogan-express')); 
 
 app.use(bodyParser()); 
 app.use(busboy());
@@ -31,7 +31,7 @@ app.use(session({
 }));
 app.use(express.static(__dirname + '/public'));
  
-app.use(usermw());
+app.use(usermw()); 
 app.use(routes);  
   
   
