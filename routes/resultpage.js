@@ -183,7 +183,7 @@ exports.getPdf = function(req, res) {
         "<style type='text/css'> " + contcss + "</style>" + 
         "</head><body>" + req.body.pdfhtml + "</body></html>";
       var imgsrc = "file:///" + process.cwd() + "/public";
-      var html = html.replace(/src="/g, 'src="' + imgsrc).replace(/src='/g, "src='" + imgsrc).replace(/@Page@/g, "{{page}}({{pages}})");
+      var html = html.replace(/src="/g, 'src="' + imgsrc).replace(/src='/g, "src='" + imgsrc).replace(/@Page@/g, "{{page}}({{pages}})").replace(/@today@/g, common.formatDate(new Date()));
       var options = { 
         format: 'A4',
         border: {
