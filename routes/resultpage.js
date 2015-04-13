@@ -96,6 +96,7 @@ function removerImgAndIframe(src) {
 function getResults(user, testid) {
   var d = Q.defer();
   var test;
+  var starts;
   common.getTestInfo(testid).then(
     function(atest){
       test = atest;
@@ -103,28 +104,25 @@ function getResults(user, testid) {
       return db.runQuery(sql, [user.id, testid]);
     }
   ).then(
-    function(starts) {
-      var results = [];
+    function(rows) {
+      starts = rows;
       var promises = [];
-      for (var i=0; i < starts.length; i++)
-        promises.push(getResult(test, starts[i], results));
-      Q.all(promises).then(
-        function(){
-          d.resolve(results);
-        },
-        function(err) {
-          d.reject(err);
-        }
-      );
+      for (var i=0; i < starts.length; i++) 
+        promises.push(addResult(test, starts[i]));
+      return Q.all(promises);
+    }
+  ).then(
+    function(){
+      d.resolve(starts);
     },
-    function(err){
+    function(err) {
       d.reject(err);
     }
   );
   return d.promise;
 }
 
-function getResult(test, start, results) {
+function addResult(test, start) {
   var d = Q.defer();
   var sql =
     "select r.startedid, q.id as questionid, q.text, r.iscorrect , ra.altid, ra.alttext " +
@@ -147,7 +145,6 @@ function getResult(test, start, results) {
         aquestion.selalts = answer.selalts;
         start.questions.push(aquestion);
       }
-      results.push(start);
       d.resolve();
     },
     function(err){

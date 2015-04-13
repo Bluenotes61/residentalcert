@@ -148,6 +148,21 @@ function getStartedTest(user, testid, startedid) {
   return d.promise;
 }
 
+function isAnswerCorrect(answerlist, correctlist) {
+  if (answerlist.length != correctlist.length)
+    return false;
+  var iscorrect = true;
+  for (var i=0; i < correctlist.length && iscorrect; i++) {
+    var found = false;
+    for (var j=0; j < answerlist.length && !found; j++) {
+      if (parseInt(answerlist[j].id) == parseInt(correctlist[i].id))
+        found = true;
+    }
+    iscorrect = found;
+  }
+  return iscorrect;
+}
+
 exports.saveAnswer = function(req, res) {
   var startedid = req.body.startedid;
   var questionid = req.body.questionid;
@@ -170,15 +185,9 @@ exports.saveAnswer = function(req, res) {
   ).then(
     function(correctlist) {
       var sql = "insert into testresultsalt (startedid, questionid, altid, alttext) values(?, ?, ?, ?)";
-      var correct = true;
-      for (var i=0; i < selectedalt.length; i++) {
+      for (var i=0; i < selectedalt.length; i++) 
         db.runQuery(sql, [startedid, questionid, selectedalt[i].id, selectedalt[i].text]);
-        var found = false;
-        for (var j=0; j < correctlist.length && !found; j++) 
-          found = (selectedalt[i].id == String(correctlist[j].id));
-        if (!found) correct = false;
-      }
-      correct == (correct && correctlist.length == selectedalt.length);
+      var correct = isAnswerCorrect(selectedalt, correctlist);
       sql = "insert into testresults (startedid, questionid, iscorrect) values(?, ?, ?)";
       db.runQuery(sql, [startedid, questionid, (correct ? "1" : "0")]);
       res.json({});
