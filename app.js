@@ -6,11 +6,12 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var busboy = require('connect-busboy');
 var usermw = require("./helpers/user.js");  
+var routes = require("./helpers/routes.js");  
 var config = require("./config.js")
     
 var app = express();     
 
-var server = app.listen(config.server.port, function() {
+var server = app.listen(config.port, function() {
   console.log('Listening on port %d', server.address().port);
 });      
    
@@ -31,7 +32,7 @@ app.use(session({
 app.use(express.static(__dirname + '/public'));
  
 app.use(usermw());
-app.use(require('./controllers'));  
+app.use(routes);  
   
   
 /// catch 404 and forwarding to error handler
