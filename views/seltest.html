@@ -51,18 +51,22 @@
 </div>
 
 <div id='print'>
-  <div class='head clearfix'>
-    <h1 class='left'>Resideidental certifier - Testresultat</h1>
-    <img class='right' src='/gfx/logga.png' />
-  </div>
-  <div class='content'>
-    <div class='info1'>
-      <h1 class='username'>{{user.name}}</h1>
-      <h2>{{group.name}}</h2>
-      <h3>{{group.description}}</h3>
+  <div id='pageHeader'>
+    <div class='head clearfix'>
+      <div class='left logo'>
+        <img src='/gfx/logo.png' />
+        <div>Resident<br />certifier</div>
+      </div>
+      <div class='left center'>
+        <h2>{{group.name}}</h2>
+        <h3>{{group.description}}</h3>
+      </div>
     </div>
-    <div class='info2 summary'>
+  </div>
+  <div id='pageContent' class='content'>
+    <div class='info summary'>
       <table>
+        <tr><td>Elev: </td><td><div class='username'><span>{{user.name}}</span></div></td></tr>
         <tr><td>Handledare: </td><td><div class='supervisor'><span>{{{summary.supervisor}}}</span></div></td></tr>
         <tr><td>Antal deltester: </td><td><div class='noftests'><span>{{{summary.noftests}}}</span></div></td></tr>
         <tr><td>Antal genomförda deltester: </td><td><div class='nofdonetests'><span>{{{summary.nofdonetests}}}</span></div></td></tr>
@@ -70,8 +74,19 @@
       </table>
     </div>
     <table class='results'>
-      <thead><tr><th><h3>Deltest</h3></th><th><h3>Resultat</h3></th><th><h3>Testdatum</h3></th></tr></thead>
+      <thead><tr><th>Deltest</th><th>Testdatum</th><th>Resultat</th></tr></thead>
       <tbody>{{{printresults}}}</tbody>
     </table>
   </div>
+  <div id='pageFooter'>
+    <div class='foot clearfix'>
+      <div class='left logo'><img src='/gfx/logga.png' /></div>
+      <div class='left name username'>{{user.name}}</div>
+      <div class='right pagenr'>@Page@</div>
+    </div>
+  </div>
 </div>
+
+<form id='printform' method='post' action='/Testresultat' target='_blank'>
+  <input type='hidden' id='pdfhtml' name='pdfhtml' />
+</form>

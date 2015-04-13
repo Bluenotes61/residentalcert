@@ -107,7 +107,7 @@ exports.createUser = function(guid, uid) {
   ).then(
     function(rows) {
       if (rows.length > 0)
-        user.supervisor = rows[0].name;
+        user[0].supervisor = rows[0].name;
       return db.runQuery("select id, relevanceorder from roles", []);
     }
   ).then(
@@ -121,7 +121,7 @@ exports.createUser = function(guid, uid) {
         guid: user[0].guid,
         email: user[0].email,
         name: user[0].name,
-        supervisor:user.supervisor,
+        supervisor:user[0].supervisor,
         roles: roles,
         groups: []
       };

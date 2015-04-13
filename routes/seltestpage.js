@@ -120,7 +120,7 @@ function getResultHtml(user, tests) {
         "<div class='col col4'><a class='icon tooltipstered' href='/resultat?id=" + tests[i].id + "&uid=" + user.id + "'><img alt='Detaljer' src='/gfx/info.png'></a></div></div>";
       rphtml +=
         "<tr><td><div class='name'>" + tests[i].name + "</div><div class='description'>" + tests[i].description + "</div></td>" +
-        "<td>" + trieshtml + "</td><td>" + dates + "</td></tr>";
+        "<td>" + dates + "</td><td>" + trieshtml + "</td></tr>";
     }
   } 
   var summary = {
