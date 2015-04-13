@@ -182,7 +182,7 @@ exports.getPdf = function(req, res) {
       var html = "<!DOCTYPE html><html><head>" + 
         "<style type='text/css'> " + contcss + "</style>" + 
         "</head><body>" + req.body.pdfhtml + "</body></html>";
-      var imgsrc = "file:///" + path.dirname(require.main.filename) + "/public";
+      var imgsrc = "file:///" + process.cwd() + "/public";
       var html = html.replace(/src="/g, 'src="' + imgsrc).replace(/src='/g, "src='" + imgsrc).replace(/@Page@/g, "{{page}}({{pages}})");
       var options = { 
         format: 'A4',
@@ -214,11 +214,13 @@ exports.getPdf = function(req, res) {
 }
 
 function readFile(filename) {
-  var serverDir = path.dirname(require.main.filename) + "/public";
-
   var d = Q.defer();
+  var serverDir = process.cwd() + "/public";
   fs.readFile(serverDir + filename, function(error, data) {
-    if (error) d.resolve("");
+    if (error) {
+      console.log(error);
+      d.resolve("");
+    }
     else d.resolve(data);
   });
   return d.promise;
