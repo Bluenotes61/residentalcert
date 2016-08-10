@@ -11,7 +11,7 @@ var config = require("./config.js")
     
 var app = express();     
 
-var server = app.listen(config.port, function() {
+var server = app.listen(config.server.port, function() {
   console.log('Listening on port %d', server.address().port);
 });      
    
